@@ -16,12 +16,34 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  h1 {
+    /*TODO cleanup this crap*/
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  h2 {
+    font-size: clamp(30px, 8vw, 50px);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  h3,
+  h3 {
+    @apply text-xl;
+  }
+  body {
+    @apply h-screen m-0 min-w-[400px];
+  }
+  section {
+    @apply relative flex flex-col min-h-[60vh] py-24 p-[30vw] items-center;
+  }
+
+  a {
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: #93c5fd;
+  }
 }
