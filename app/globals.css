@@ -36,7 +36,7 @@
     @apply h-screen m-0 min-w-[400px];
   }
   section {
-    @apply relative flex flex-col min-h-[60vh] py-24 p-[30vw] items-center;
+    @apply relative flex flex-col min-h-[60vh] py-24 p-[10vw] items-center;
   }
 
   a {
