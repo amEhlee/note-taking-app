@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import FormatDate from "@/utils/FormatDate";
-import { RiArrowDownSLine } from "react-icons/ri";
+import { BiTrash, BiEditAlt } from "react-icons/bi";
+import Link from "next/link";
 
 export interface Note {
   id: string;
@@ -23,23 +24,28 @@ const ViewNoteCard = (note: Note) => {
       <hr className="h-px my-3 bg-gray-700" />
       <p className="text-gray-900">{note.content}</p>
       <hr className="h-px my-3 bg-gray-700" />
-      <p className="float-left">{FormatDate(note.date)}</p>
-      
-      <div
-        onClick={() => {
-          setOpen(!open);
-        }}
-        className="float-right"
-      >
-        <div className="cursor-pointer hover:bg-gray-200 p-1 rounded-full duration-300">
-          <RiArrowDownSLine />
-        </div>
-        <div>
-          {open ? (
-            <ul className="absolute bg-white border border-gray-200 hover:bg-rose-500 hover:text-white rounded-md duration-500 px-2 py-1 font-medium -translate-x-1/3 cursor-pointer">
-              <li>Delete</li>
-            </ul>
-          ) : null}
+      <p className="float-left mt-1">{FormatDate(note.date)}</p>
+
+      <div className="flex gap-1 float-right">
+        <Link href={`/notes/${note.id}`} className="cursor-pointer hover:bg-gray-200 p-1 rounded-full duration-300">
+          <BiEditAlt size={25}/>
+        </Link>
+
+        <div
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          <div className="cursor-pointer hover:bg-gray-200 p-1 rounded-full duration-300">
+            <BiTrash size={25}/>
+          </div>
+          <div>
+            {open ? (
+              <ul className="absolute bg-white border border-gray-200 hover:bg-rose-500 hover:text-white rounded-md duration-500 px-2 py-1 font-medium -translate-x-1/3 cursor-pointer">
+                <li>Delete</li>
+              </ul>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
